@@ -104,13 +104,17 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Foto Mahasiswa</label>
-                        <div class="text-center mb-3">
+                        <div class="text-center mb-3 position-relative" style="overflow:hidden;width:150px;height:150px;margin:0 auto">
+                            @php
+                                $fotoUrl = $mahasiswa->foto
+                                    ? asset('storage/' . $mahasiswa->foto)
+                                    : asset('vendor/startbootstrap-sb-admin-2/img/undraw_profile.svg');
+                            @endphp
                             <img id="preview-foto"
-                                 src="{{ $mahasiswa->foto
-                                     ? Storage::url($mahasiswa->foto)
-                                     : asset('vendor/startbootstrap-sb-admin-2/img/undraw_profile.svg') }}"
+                                 src="{{ $fotoUrl }}"
                                  class="img-thumbnail rounded" width="150" height="150"
-                                 style="object-fit:cover">
+                                 style="object-fit:cover"
+                                 onerror="this.onerror=null;this.src='{{ asset('vendor/startbootstrap-sb-admin-2/img/undraw_profile.svg') }}';">
                         </div>
                         <input type="file" name="foto" id="foto"
                                class="form-control-file {{ $errors->has('foto') ? 'is-invalid' : '' }}"

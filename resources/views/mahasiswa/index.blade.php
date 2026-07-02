@@ -100,12 +100,13 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         @if($mhs->foto)
-                                            <img src="{{ Storage::url($mhs->foto) }}" class="rounded-circle mr-2" width="32"
-                                                height="32" style="object-fit:cover">
+                                            <img src="{{ asset('storage/' . $mhs->foto) }}" 
+                                                 class="rounded-circle mr-2" width="32" height="32" 
+                                                 style="object-fit:cover"
+                                                 alt="Foto {{ $mhs->nama }}">
                                         @else
-                                            <div class="rounded-circle bg-primary d-flex align-items-center
-                                                            justify-content-center mr-2 text-white"
-                                                style="width:32px;height:32px;font-size:14px;flex-shrink:0">
+                                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center mr-2 text-white" 
+                                                 style="width:32px;height:32px;font-size:14px;flex-shrink:0">
                                                 {{ strtoupper(substr($mhs->nama, 0, 1)) }}
                                             </div>
                                         @endif
