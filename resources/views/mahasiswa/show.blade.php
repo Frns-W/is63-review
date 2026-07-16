@@ -1,11 +1,11 @@
 {{-- resources/views/mahasiswa/show.blade.php --}}
 @extends('layouts.app')
-<<<<<<< HEAD
+
 @php use Illuminate\Support\Facades\Storage; @endphp
- 
+
 @section('title', $mahasiswa->nama)
 @section('page-title', 'Detail Mahasiswa')
- 
+
 @section('page-action')
     <div class="d-flex gap-2">
         <a href="{{ route('mahasiswa.edit', $mahasiswa) }}" class="btn btn-warning btn-sm">
@@ -17,13 +17,11 @@
         </a>
     </div>
 @endsection
- 
+
 @section('content')
 <div class="row">
- 
     {{-- ===== KOLOM KIRI: PROFIL ===== --}}
     <div class="col-xl-4 col-lg-5">
- 
         {{-- Kartu Foto & Nama --}}
         <div class="card shadow mb-4">
             <div class="card-body text-center py-4">
@@ -42,6 +40,7 @@
                 @endif
                 <h5 class="font-weight-bold mb-1">{{ $mahasiswa->nama }}</h5>
                 <p class="text-muted mb-2"><code>{{ $mahasiswa->nim }}</code></p>
+
                 @php
                     $badgeColor = match($mahasiswa->status) {
                         'aktif'   => 'success',
@@ -51,12 +50,13 @@
                         default   => 'secondary'
                     };
                 @endphp
+
                 <span class="badge badge-{{ $badgeColor }} badge-pill px-3 py-2">
                     {{ ucfirst($mahasiswa->status) }}
                 </span>
             </div>
         </div>
- 
+
         {{-- Kartu Informasi Detail --}}
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -104,18 +104,15 @@
             <i class="fas fa-arrow-left mr-1"></i> Kembali ke Daftar
         </a>
     </div>
- 
+
     {{-- ===== KOLOM KANAN: NILAI ===== --}}
     <div class="col-xl-8 col-lg-7">
- 
         {{-- Kartu Statistik Nilai --}}
         <div class="row mb-4">
             <div class="col-md-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Total MK
-                        </div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total MK</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             {{ $mahasiswa->nilais->count() }} MK
                         </div>
@@ -125,9 +122,7 @@
             <div class="col-md-4">
                 <div class="card border-left-success shadow h-100 py-2">
                     <div class="card-body">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Rata-rata Nilai
-                        </div>
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Rata-rata Nilai</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             {{ number_format($mahasiswa->nilais->avg('nilai_angka') ?? 0, 2) }}
                         </div>
@@ -137,9 +132,7 @@
             <div class="col-md-4">
                 <div class="card border-left-info shadow h-100 py-2">
                     <div class="card-body">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                            Total SKS
-                        </div>
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total SKS</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             {{ $mahasiswa->nilais->sum('sks') }} SKS
                         </div>
@@ -147,7 +140,7 @@
                 </div>
             </div>
         </div>
- 
+
         {{-- Tabel Transkrip Nilai --}}
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
@@ -159,6 +152,7 @@
                     <i class="fas fa-plus mr-1"></i> Tambah Nilai
                 </a>
             </div>
+
             <div class="card-body p-0">
                 <div class="table-responsive">
                     <table class="table table-bordered table-sm mb-0">
@@ -180,9 +174,8 @@
                                 <td><code>{{ $nilai->kode_mk }}</code></td>
                                 <td>{{ $nilai->nama_mk }}</td>
                                 <td class="text-center">{{ $nilai->sks }}</td>
-                                <td class="text-center font-weight-bold">
-                                    {{ number_format($nilai->nilai_angka, 1) }}
-                                </td>
+                                <td class="text-center font-weight-bold">{{ number_format($nilai->nilai_angka, 1) }}</td>
+
                                 <td class="text-center">
                                     @php
                                         $gc = match($nilai->nilai_huruf) {
@@ -194,25 +187,21 @@
                                             default => 'danger'
                                         };
                                     @endphp
-                                    <span class="badge badge-{{ $gc }}">
-                                        {{ $nilai->nilai_huruf }}
-                                    </span>
+                                    <span class="badge badge-{{ $gc }}">{{ $nilai->nilai_huruf }}</span>
                                 </td>
+
                                 <td>{{ $nilai->semester }}</td>
                                 <td class="text-center">{{ $nilai->tahun_akademik }}</td>
+
                                 <td class="text-center">
-                                    <a href="{{ route('nilai.edit', $nilai) }}"
-                                       class="btn btn-warning btn-sm" title="Edit">
+                                    <a href="{{ route('nilai.edit', $nilai) }}" class="btn btn-warning btn-sm" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <button type="button" class="btn btn-danger btn-sm"
-                                            title="Hapus"
-                                            onclick="hapusNilai({{ $nilai->id }})">
+                                    <button type="button" class="btn btn-danger btn-sm" title="Hapus" onclick="hapusNilai({{ $nilai->id }})">
                                         <i class="fas fa-trash"></i>
                                     </button>
-                                    <form id="form-hapus-nilai-{{ $nilai->id }}"
-                                          action="{{ route('nilai.destroy', $nilai) }}"
-                                          method="POST" style="display:none">
+
+                                    <form id="form-hapus-nilai-{{ $nilai->id }}" action="{{ route('nilai.destroy', $nilai) }}" method="POST" style="display:none">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -230,11 +219,11 @@
                 </div>
             </div>
         </div>
- 
+
     </div>
 </div>
 @endsection
- 
+
 @push('scripts')
 <script>
 function hapusNilai(id) {
@@ -244,36 +233,4 @@ function hapusNilai(id) {
 }
 </script>
 @endpush
-=======
 
-@section('title', 'Detail Mahasiswa')
-@section('page-title', 'Detail Mahasiswa')
-
-@section('content')
-<div class="card shadow mb-4">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-3 text-center">
-                {{-- Tampilkan foto mahasiswa --}}
-                @php
-                    $fotoUrl = $mahasiswa->foto
-                        ? asset('storage/' . $mahasiswa->foto)
-                        : asset('vendor/startbootstrap-sb-admin-2/img/undraw_profile.svg');
-                @endphp
-                <img src="{{ $fotoUrl }}"
-                     alt="Foto {{ $mahasiswa->nama }}"
-                     class="img-thumbnail" width="150"
-                     onerror="this.onerror=null;this.src='{{ asset('vendor/startbootstrap-sb-admin-2/img/undraw_profile.svg') }}';">
-            </div>
-            <div class="col-md-9">
-                <h4 class="font-weight-bold">{{ $mahasiswa->nama }}</h4>
-                <p class="mb-1"><strong>NIM:</strong> {{ $mahasiswa->nim }}</p>
-                <p class="mb-1"><strong>Email:</strong> {{ $mahasiswa->email }}</p>
-                <p class="mb-1"><strong>Program Studi:</strong> {{ $mahasiswa->prodi->nama_prodi ?? '-' }}</p>
-                <p class="mb-1"><strong>Status:</strong> {{ ucfirst($mahasiswa->status) }}</p>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
->>>>>>> 93f3c832ecf478fe90b79c99a5ff6e32cb71a03d
