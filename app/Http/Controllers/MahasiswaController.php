@@ -65,8 +65,7 @@ class MahasiswaController extends Controller
 
         // Handle upload foto jika ada
         if ($request->hasFile('foto')) {
-            $data['foto'] = $request->file('foto')
-                ->store('foto-mahasiswa', 'public');
+            $data['foto'] = $this->uploadFoto($request, $request->input('nim'));
         }
 
         Mahasiswa::create($data);
@@ -117,8 +116,7 @@ class MahasiswaController extends Controller
             if ($mahasiswa->foto) {
                 Storage::disk('public')->delete($mahasiswa->foto);
             }
-            $data['foto'] = $request->file('foto')
-                ->store('foto-mahasiswa', 'public');
+            $data['foto'] = $this->uploadFoto($request, $request->input('nim', $mahasiswa->nim));
         }
 
         $mahasiswa->update($data);
@@ -145,5 +143,19 @@ class MahasiswaController extends Controller
         return redirect()
             ->route('mahasiswa.index')
             ->with('success', 'Data mahasiswa berhasil dihapus!');
+    }
+
+    protected function uploadFoto(Request $request, ?string $identifier = null): ?string
+    {
+        if (! $request->hasFile('foto')) {
+            return null;
+        }
+
+        $file = $request->file('foto');
+        $baseName = preg_replace('/[^A-Za-z0-9._-]/', '-', (string) ($identifier ?? 'mahasiswa'));
+        $extension = $file->getClientOriginalExtension();
+        $filename = 'mahasiswa-' . trim($baseName, '-') . '.' . $extension;
+
+        return $file->storeAs('foto-mahasiswa', $filename, 'public');
     }
 }
