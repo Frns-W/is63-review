@@ -1,9 +1,32 @@
 <?php
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\NilaiController;
+use App\Http\Controllers\ProdiController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/welcome', function () {
-    return view('welcome');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.attempt');
+});
+
+Route::middleware('auth')->group(function () {
+
+    // Logout
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    // Dashboard
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Modul Program Studi — 7 route: prodi.index s/d prodi.destroy
+    Route::resource('prodi', ProdiController::class);
+
+    // Modul Mahasiswa — 7 route: mahasiswa.index s/d mahasiswa.destroy
+    Route::resource('mahasiswa', MahasiswaController::class);
+
+    // Modul Nilai — 7 route: nilai.index s/d nilai.destroy
+    Route::resource('nilai', NilaiController::class);
+
 });
