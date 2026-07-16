@@ -7,9 +7,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 
+<<<<<<< HEAD
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('login.attempt');
+=======
+Route::resource('prodi', ProdiController::class);
+Route::resource('mahasiswa', MahasiswaController::class);
+Route::resource('nilai', NilaiController::class);
+
+Route::get('/welcome', function () {
+    return view('welcome');
+>>>>>>> 93f3c832ecf478fe90b79c99a5ff6e32cb71a03d
 });
 
 Route::middleware('auth')->group(function () {
