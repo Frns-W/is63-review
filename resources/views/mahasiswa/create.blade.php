@@ -112,7 +112,11 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Foto Mahasiswa</label>
+<<<<<<< HEAD
                         <div class="text-center mb-3">
+=======
+                        <div class="text-center mb-3 position-relative" style="overflow:hidden;width:150px;height:150px;margin:0 auto">
+>>>>>>> 93f3c832ecf478fe90b79c99a5ff6e32cb71a03d
                             <img id="preview-foto"
                                  src="{{ asset('vendor/startbootstrap-sb-admin-2/img/undraw_profile.svg') }}"
                                  class="img-thumbnail rounded" width="150" height="150"

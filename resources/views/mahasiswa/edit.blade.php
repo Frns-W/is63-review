@@ -15,7 +15,11 @@
         </h6>
     </div>
     <div class="card-body">
+<<<<<<< HEAD
         <form id="form-update-mahasiswa" action="{{ route('mahasiswa.update', $mahasiswa) }}" method="POST"
+=======
+        <form action="{{ route('mahasiswa.update', $mahasiswa) }}" method="POST"
+>>>>>>> 93f3c832ecf478fe90b79c99a5ff6e32cb71a03d
               enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -104,6 +108,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Foto Mahasiswa</label>
+<<<<<<< HEAD
                         <div class="text-center mb-3">
                             <img id="preview-foto"
                                  src="{{ $mahasiswa->foto
@@ -111,6 +116,19 @@
                                      : asset('vendor/startbootstrap-sb-admin-2/img/undraw_profile.svg') }}"
                                  class="img-thumbnail rounded" width="150" height="150"
                                  style="object-fit:cover">
+=======
+                        <div class="text-center mb-3 position-relative" style="overflow:hidden;width:150px;height:150px;margin:0 auto">
+                            @php
+                                $fotoUrl = $mahasiswa->foto
+                                    ? asset('storage/' . $mahasiswa->foto)
+                                    : asset('vendor/startbootstrap-sb-admin-2/img/undraw_profile.svg');
+                            @endphp
+                            <img id="preview-foto"
+                                 src="{{ $fotoUrl }}"
+                                 class="img-thumbnail rounded" width="150" height="150"
+                                 style="object-fit:cover"
+                                 onerror="this.onerror=null;this.src='{{ asset('vendor/startbootstrap-sb-admin-2/img/undraw_profile.svg') }}';">
+>>>>>>> 93f3c832ecf478fe90b79c99a5ff6e32cb71a03d
                         </div>
                         <input type="file" name="foto" id="foto"
                                class="form-control-file {{ $errors->has('foto') ? 'is-invalid' : '' }}"
@@ -125,6 +143,7 @@
             </div>
  
             <hr>
+<<<<<<< HEAD
             <div class="d-flex justify-content-between align-items-center">
                 <a href="{{ route('mahasiswa.index') }}" class="btn btn-secondary">
                     <i class="fas fa-arrow-left mr-1"></i> Kembali
@@ -142,6 +161,15 @@
                         <i class="fas fa-save mr-1"></i> Perbarui Data
                     </button>
                 </div>
+=======
+            <div class="d-flex justify-content-between">
+                <a href="{{ route('mahasiswa.show', $mahasiswa) }}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left mr-1"></i> Kembali
+                </a>
+                <button type="submit" class="btn btn-warning">
+                    <i class="fas fa-save mr-1"></i> Perbarui Data
+                </button>
+>>>>>>> 93f3c832ecf478fe90b79c99a5ff6e32cb71a03d
             </div>
         </form>
     </div>
