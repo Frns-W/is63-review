@@ -11,11 +11,14 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        User::create([
-            'name' => 'Administrator',
-            'email' => 'admin@simahaswa.com',
-            'password' => Hash::make('password123'), // WAJIB di-hash!
-        ]);
+        User::updateOrCreate(
+            ['email' => 'admin@simahaswa.com'],
+            [
+                'name' => 'Administrator',
+                'password' => Hash::make('password123'), // WAJIB di-hash!
+            ]
+        );
+
 
         $this->command->info('UserSeeder: Akun admin berhasil dibuat.');
         $this->command->info('Login: admin@simahaswa.com | password123');
