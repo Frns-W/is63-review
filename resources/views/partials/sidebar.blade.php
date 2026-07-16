@@ -12,71 +12,45 @@
     </a>
  
     <hr class="sidebar-divider my-0">
-<<<<<<< HEAD
-
-=======
  
     {{-- Menu: Dashboard --}}
->>>>>>> 93f3c832ecf478fe90b79c99a5ff6e32cb71a03d
     <li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
     </li>
-<<<<<<< HEAD
-
-    <hr class="sidebar-divider">
-    <div class="sidebar-heading">Data Master</div>
-
-=======
  
     <hr class="sidebar-divider">
     <div class="sidebar-heading">Data Master</div>
  
     {{-- Menu: Program Studi --}}
->>>>>>> 93f3c832ecf478fe90b79c99a5ff6e32cb71a03d
     <li class="nav-item {{ request()->routeIs('prodi.*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('prodi.index') }}">
             <i class="fas fa-fw fa-university"></i>
             <span>Program Studi</span>
         </a>
     </li>
-<<<<<<< HEAD
-
-=======
  
     {{-- Menu: Mahasiswa --}}
->>>>>>> 93f3c832ecf478fe90b79c99a5ff6e32cb71a03d
     <li class="nav-item {{ request()->routeIs('mahasiswa.*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('mahasiswa.index') }}">
             <i class="fas fa-fw fa-users"></i>
             <span>Mahasiswa</span>
         </a>
     </li>
-<<<<<<< HEAD
-
-    <hr class="sidebar-divider">
-    <div class="sidebar-heading">Akademik</div>
-
-=======
  
     <hr class="sidebar-divider">
     <div class="sidebar-heading">Akademik</div>
  
     {{-- Menu: Nilai --}}
->>>>>>> 93f3c832ecf478fe90b79c99a5ff6e32cb71a03d
     <li class="nav-item {{ request()->routeIs('nilai.*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('nilai.index') }}">
             <i class="fas fa-fw fa-chart-bar"></i>
             <span>Nilai Mahasiswa</span>
         </a>
     </li>
-<<<<<<< HEAD
-
-=======
  
->>>>>>> 93f3c832ecf478fe90b79c99a5ff6e32cb71a03d
     <hr class="sidebar-divider d-none d-md-block">
  
     {{-- Sidebar Toggler --}}
@@ -85,3 +59,4 @@
     </div>
  
 </ul>
+
