@@ -22,7 +22,8 @@
             {{-- Form Filter --}}
             <form method="GET" class="row g-3 mb-3" action="{{ route('mahasiswa.index') }}">
                 <div class="col-md-4">
-                    <input type="text" name="search" class="form-control" placeholder="Cari nama atau NIM" value="{{ request('search') }}">
+                    <input type="text" name="search" class="form-control" placeholder="Cari nama atau NIM"
+                        value="{{ request('search') }}">
                 </div>
                 <div class="col-md-3">
                     <select name="status" class="form-control">
@@ -72,12 +73,12 @@
                                     <div class="d-flex align-items-center">
                                         @if($mahasiswa->foto)
                                             <img src="{{ asset('storage/' . $mahasiswa->foto) }}"
-                                                 class="rounded-circle border border-primary shadow-sm mr-2"
-                                                 style="width:36px;height:36px;object-fit:cover;"
-                                                 onerror="this.onerror=null;this.src='{{ asset('vendor/startbootstrap-sb-admin-2/img/undraw_profile.svg') }}';">
+                                                class="rounded-circle border border-primary shadow-sm mr-2"
+                                                style="width:36px;height:36px;object-fit:cover;"
+                                                onerror="this.onerror=null;this.src='{{ asset('vendor/startbootstrap-sb-admin-2/img/undraw_profile.svg') }}';">
                                         @else
                                             <div class="rounded-circle bg-gradient-primary d-inline-flex align-items-center justify-content-center border border-primary shadow-sm mr-2"
-                                                 style="width:36px;height:36px;font-size:13px;font-weight:700;color:white;">
+                                                style="width:36px;height:36px;font-size:13px;font-weight:700;color:white;">
                                                 {{ strtoupper(substr($mahasiswa->nama, 0, 1)) }}
                                             </div>
                                         @endif
@@ -92,10 +93,12 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <a href="{{ route('mahasiswa.show', $mahasiswa) }}" class="btn btn-info btn-sm" title="Detail">
+                                    <a href="{{ route('mahasiswa.show', $mahasiswa) }}" class="btn btn-info btn-sm"
+                                        title="Detail">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="{{ route('mahasiswa.edit', $mahasiswa) }}" class="btn btn-warning btn-sm" title="Edit">
+                                    <a href="{{ route('mahasiswa.edit', $mahasiswa) }}" class="btn btn-warning btn-sm"
+                                        title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
 
@@ -123,11 +126,11 @@
             {{-- Pagination --}}
             <div class="d-flex justify-content-between align-items-center mt-3">
                 <small class="text-muted">
-                    Menampilkan {{ $mahasiswas->firstItem() }}–{{ $mahasiswas->lastItem() }} dari {{ $mahasiswas->total() }} data
+                    Menampilkan {{ $mahasiswas->firstItem() }}–{{ $mahasiswas->lastItem() }} dari {{ $mahasiswas->total() }}
+                    data
                 </small>
                 {{ $mahasiswas->links() }}
             </div>
         </div>
     </div>
 @endsection
-

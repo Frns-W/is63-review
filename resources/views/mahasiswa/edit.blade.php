@@ -143,7 +143,7 @@
             </div>
  
             <hr>
-<<<<<<< HEAD
+
             <div class="d-flex justify-content-between align-items-center">
                 <a href="{{ route('mahasiswa.index') }}" class="btn btn-secondary">
                     <i class="fas fa-arrow-left mr-1"></i> Kembali
@@ -161,7 +161,7 @@
                         <i class="fas fa-save mr-1"></i> Perbarui Data
                     </button>
                 </div>
-=======
+
             <div class="d-flex justify-content-between">
                 <a href="{{ route('mahasiswa.show', $mahasiswa) }}" class="btn btn-secondary">
                     <i class="fas fa-arrow-left mr-1"></i> Kembali
